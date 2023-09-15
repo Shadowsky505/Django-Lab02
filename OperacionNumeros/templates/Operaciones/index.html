@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+
+    <style>
+        .fondo-imagen {
+            background-image: url("https://cdn.discordapp.com/attachments/830204744471019550/1149916326001901648/paper-1074131_1920.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+        }
+    </style>
+
+</head>
+
+<body class="fondo-imagen">
+
+    <div class="container mt-3">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <!-- Primera tarjeta -->
+                <div class="card mb-4">
+                    <div class="card-header bg-primary fw-bold text-white">
+                        Calculadora en Django (by Aldair)
+                    </div>
+                    <div class="card-body">
+                        <form action="{% url 'OperacionNumeros:resultado' %}" method="post">
+                            {% csrf_token %}
+                            <div class="mb-3 d-flex">
+                                <div class="flex-row mx-1">
+                                    <label for="numero1" class="form-label">Entrada A:</label>
+                                    <input type="number" class="form-control" id="numero1" name="numero1" required>
+                                </div>
+                                <div class="flex-row mx-1">
+                                    <label for="numero2" class="form-label">Entrada B:</label>
+                                    <input type="number" class="form-control" id="numero2" name="numero2" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="opciones" class="form-label">Selecciona una opción</label>
+                                <select class="form-select" id="opciones" name="operacion" required>
+                                    <option value="sumar" checked="checked">Sumar</option>
+                                    <option value="restar">Restar</option>
+                                    <option value="multiplicar">Multiplicar</option>
+                                    <option value="dividir">Dividir</option>
+                                </select>
+                            </div>
+                            <div class="row">
+                                <button type="submit" class="btn btn-success justify-content-center" name="submit"
+                                    value="Enviar">Enviar</button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Segunda tarjeta -->
+                <div class="card">
+                    <div class="card-header">
+                        RESULTADO
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title"> {{resultado}} </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
